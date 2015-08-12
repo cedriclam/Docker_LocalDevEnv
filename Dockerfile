@@ -36,7 +36,7 @@ RUN \
 
 
 # Install Bower & Gulp
-RUN npm install -g bower gulp
+RUN npm install -g bower gulp node-sass
 
 # Installing SASS/Compass
 RUN apt-get install software-properties-common
