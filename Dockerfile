@@ -34,10 +34,6 @@ RUN \
   npm install -g npm && \
   printf '\n# Node.js\nexport PATH="node_modules/.bin:$PATH"' >> /root/.bashrc
 
-
-# Install Bower & Gulp
-RUN npm install -g bower gulp node-sass
-
 # Installing SASS/Compass
 RUN apt-get install software-properties-common
 RUN apt-add-repository ppa:brightbox/ruby-ng
@@ -45,6 +41,11 @@ RUN apt-get update
 RUN apt-get install -y ruby-full rubygems-integration
 RUN gem install sass
 RUN gem install compass
+
+# Install Bower & Gulp
+RUN npm install -g npm
+RUN npm cache clean
+RUN npm install -g bower gulp
 
 RUN sudo apt-get install -y build-essential chrpath libssl-dev libxft-dev libfreetype6 libfreetype6-dev libfontconfig1 libfontconfig1-dev
 
@@ -69,6 +70,7 @@ VOLUME ["/data"]
 
 # expose gulp serve port
 EXPOSE 3000
+EXPOSE 3001
 # expose karma port
 EXPOSE 9876
 
